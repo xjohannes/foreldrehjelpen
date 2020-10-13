@@ -1,12 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import { Provider } from 'react-redux';
+import './index.module.css';
 import App from './App';
+import store from './reducers';
 import * as serviceWorker from './serviceWorker';
+import Auth0ProviderWithHistory from './Auth0ProviderWithHistory';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <Auth0ProviderWithHistory>
+        <App />
+      </Auth0ProviderWithHistory>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
