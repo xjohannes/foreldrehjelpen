@@ -1,16 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import './index.css';
+import './index.module.css';
 import App from './App';
 import store from './reducers';
 import * as serviceWorker from './serviceWorker';
+import Auth0ProviderWithHistory from './Auth0ProviderWithHistory';
 
 ReactDOM.render(
   <React.StrictMode>
-      <Provider store={store}>
-          <App />
-      </Provider>
+    <Provider store={store}>
+      <Auth0ProviderWithHistory>
+        <App />
+      </Auth0ProviderWithHistory>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

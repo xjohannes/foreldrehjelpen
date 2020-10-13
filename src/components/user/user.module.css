@@ -1,0 +1,15 @@
+:root {
+    --disabledLinkButtonColor: #e4e4ec;
+    --disabledActionButtonColor: #a0a1b5;
+}
+
+:local(nav) {
+    background-color: green;
+    color: white;
+    font-size: 18px;
+    font-weight: 200;
+}
+
+:local(.avatar) {
+    background-color: purple;
+}
