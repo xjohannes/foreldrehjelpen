@@ -1,4 +1,7 @@
 import Home from './Home';
-import TrafikkVakt from './Trafikkvakt';
+import Menu from './Menu';
+import Trafikkvakt from './Trafikkvakt';
+import Julemarked from './Julemarked';
+import Syttendemai from './Syttendemai';
 
-export { Home, TrafikkVakt };
+export { Home, Menu, Trafikkvakt, Julemarked, Syttendemai };
