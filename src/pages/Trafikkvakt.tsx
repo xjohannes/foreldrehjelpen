@@ -1,4 +1,9 @@
-// eslint-disable-next-line @typescript-eslint/no-empty-function
-const TrafikkVakt = () => {};
+import React from 'react';
 
-export default TrafikkVakt;
+const Trafikkvakt = () => (
+  <div>
+    <h1>Trafikkvakt</h1>
+  </div>
+);
+
+export default Trafikkvakt;

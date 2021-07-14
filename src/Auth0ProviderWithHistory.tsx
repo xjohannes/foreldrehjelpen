@@ -1,5 +1,5 @@
-import { Auth0Provider } from '@auth0/auth0-react';
 import React, { ReactElement, ReactNode } from 'react';
+import { Auth0Provider } from '@auth0/auth0-react';
 import { useHistory } from 'react-router-dom';
 
 interface Auth0ProviderProps {
@@ -20,7 +20,7 @@ const Auth0ProviderWithHistory = ({
   const onRedirectCallback = (appState: AppState) => {
     history.push(appState?.returnTo || window.location.pathname);
   };
-  console.log('DEBUG redirect url', window.location.origin);
+
   return (
     <Auth0Provider
       domain={domain}
