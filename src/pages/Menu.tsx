@@ -1,6 +1,5 @@
 import React, { ReactElement } from 'react';
-import Profile from '../components/Profile';
-import Event from '../components/buttons/Event';
+import Event from '../components/Event';
 import styles from './home.module.css';
 
 const julemarked = 'Julemarked';
@@ -8,10 +7,7 @@ const syttendeMai = 'SyttendeMai';
 const Menu = (): ReactElement => (
   <section>
     <header>
-      <h1>Foreldrehjelpen - Meny</h1>
-      <div className={styles.user}>
-        <Profile />
-      </div>
+      <h2>Foreldrehjelpen - Meny</h2>
     </header>
     <nav>
       <div className={styles.eventItem}>

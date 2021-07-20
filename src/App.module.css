@@ -1,4 +1,14 @@
-.App {
+h1 {
+
+}
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/*.App {
   text-align: center;
 }
 
@@ -35,4 +45,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+}*/

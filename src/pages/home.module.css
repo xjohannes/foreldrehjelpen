@@ -1,41 +1,15 @@
-:local(section) {
-    background-color: yellowgreen;
-}
-:local(header) {
-    display: flex;
-    background-color: darkgreen;
-    color: black;
+.container {
+    border-color: white;
+    border: var(--border);
+    margin: 10px;
 }
 
-:local(h1) {
-    flex: 3;
-    padding-left: 20px;
-}
-
-:local(user) {
-    flex: 1;
-}
-
-:local(nav) {
+.wrapper {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-}
-
-:local(.eventItem) {
-    flex: 1
-}
-
-:local(.eventItem) {
-    background-color: #4CAF50; /* Green */
-    border: none;
-
-}
-
-:local(.eventItem a) {
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    color: lightgoldenrodyellow;
-    padding: 15px 32px;
+    text-align: center;
+    min-height: 50vh;
+    padding: 5px;
 }
