@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 import Avatar from 'react-avatar';
-import LogOut from '../buttons/LogOut/LogOut';
+import SignOut from '../SignOut/SignOut';
 import styles from './user.module.css';
 
 type User = {
@@ -11,7 +11,7 @@ type UserProps = {
   user: User;
 };
 
-const User = (props: UserProps) => {
+const User = (props: UserProps): ReactElement => {
   const { user } = props;
   console.log('USER ', user);
   return (
@@ -21,7 +21,7 @@ const User = (props: UserProps) => {
       </div>
       <h2>{user.name}</h2>
       <p>{user.email}</p>
-      <LogOut />
+      <SignOut />
     </nav>
   );
 };

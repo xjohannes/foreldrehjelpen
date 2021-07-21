@@ -1,8 +1,30 @@
 :root {
-@value corporatePrimary: var(--corporatePrimary);
+  /* themes */
+  --springPrimary: green;
+  --springAccent: white;
+  --springBackground: yellow;
+  --nightPrimary: #242526;
+  --nightAccent: #484a4d;
+  --nightBackground: #151616;
+  --nightTextColor: #dadce1;
+  --nightBorderColor: 1px solid #474a4d;
+
+
+
+  --bg: var(--nightPrimary);
+  --bg-accent: var(--nightAccent);
+  --background: var(--nightBackground);
+  --text-color: var(--nightTextColor);
+  --nav-size: 60px;
+  --border: var(--nightBorderColor);
+  --border-radius: 8px;
+  --speed: 500ms;
+
 }
 body {
   margin: 0;
+  background: var(--background);
+  color: var(--text-color);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -13,4 +35,19 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+button {
+  color: var(--text-color);
 }
