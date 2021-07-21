@@ -17,12 +17,15 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { Home, Menu, Trafikkvakt, Julemarked, Syttendemai } from './pages';
+import { Home, Trafikkvakt, Julemarked, Syttendemai } from './pages';
+import Menu from './pages/Menu';
 
 import PrivateRoute from './components/routes/PrivateRoute';
 import { NavBar, NavItem, DropdownMenu } from './components/NavBar';
 import AuthButton from './components/Auth';
 import Avatar from './components/Avatar';
+import BackButton from './components/BackButton';
+import PageTitle from './components/PageTitle';
 import styles from './App.module.css';
 
 function App(): ReactElement {
@@ -43,9 +46,8 @@ function App(): ReactElement {
   return (
     <>
       <div className={styles.wrapper}>
-        <header>
-          <h1>Foreldrehjelpen</h1>
-        </header>
+        <BackButton />
+        <PageTitle title="Foreldrehjelpen" />
         <NavBar>
           <AuthButton />
           {isAuthenticated && (
