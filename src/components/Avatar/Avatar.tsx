@@ -1,20 +1,34 @@
 import React, { ReactElement } from 'react';
 import stylesNav from '../NavBar/navBar.module.css';
 
+type User = {
+  name?: string;
+  picture?: string;
+};
 type AvatarProps = {
-  picture: string;
-  name: string;
+  user?: User;
 };
 
 const Avatar = (props: AvatarProps): ReactElement => {
-  const { picture, name } = props;
+  const { user } = props;
   return (
     <>
       <div className={stylesNav.navItem}>
-        <img src={picture} alt={name} className={stylesNav.iconButton} />
+        <img
+          src={user?.picture}
+          alt={user?.name}
+          className={stylesNav.iconButton}
+        />
       </div>
     </>
   );
+};
+
+Avatar.defaultProps = {
+  user: {
+    name: 'Jane Doe',
+    picture: 'No picture'
+  }
 };
 
 export default Avatar;

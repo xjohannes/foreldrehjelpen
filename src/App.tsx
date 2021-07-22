@@ -50,11 +50,7 @@ function App(): ReactElement {
         <PageTitle title="Foreldrehjelpen" />
         <NavBar>
           <AuthButton />
-          {isAuthenticated && (
-            <NavItem
-              icon={<Avatar picture={user.picture} name={user.name} />}
-            />
-          )}
+          {isAuthenticated && <NavItem icon={<Avatar user={user} />} />}
           {isAuthenticated && (
             <NavItem icon={<FontAwesomeIcon icon="caret-down" />}>
               <DropdownMenu />
