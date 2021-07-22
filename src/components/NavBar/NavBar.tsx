@@ -20,10 +20,14 @@ export const NavItem = ({ icon, children }: ItemProps) => {
   const [open, setOpen] = useState(false);
   return (
     <li className={styles.navItem}>
-      {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-      <a href="#" className={styles.iconButton} onClick={() => setOpen(!open)}>
+      {/* eslint-disable-next-line jsx-a11y/anchor-is-valid,jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
+      <button
+        type="button"
+        className={styles.iconButton}
+        onClick={() => setOpen(!open)}
+      >
         {icon}
-      </a>
+      </button>
       {open && children}
     </li>
   );
@@ -53,15 +57,18 @@ export const DropdownMenu = () => {
     goToMenu,
     children
   }: IconProps) => (
-    <a
-      href="#"
-      className={styles.menuItem}
-      onClick={() => goToMenu && setActiveMenu(goToMenu)}
-    >
-      <span className={styles.iconButton}>{leftIcon}</span>
-      {children}
-      <span className={styles.iconRight}>{rightIcon}</span>
-    </a>
+    <>
+      {/* eslint-disable-next-line jsx-a11y/anchor-is-valid,jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
+      <button
+        type="button"
+        className={styles.menuItem}
+        onClick={() => goToMenu && setActiveMenu(goToMenu)}
+      >
+        <span className={styles.iconButton}>{leftIcon}</span>
+        {children}
+        <span className={styles.iconRight}>{rightIcon}</span>
+      </button>
+    </>
   );
 
   return (
