@@ -1,0 +1,18 @@
+article {
+ display: flex;
+    align-items: center;
+    flex-direction: column;
+    border: var(--border);
+    border-radius: 8px;
+    margin: 15px 15vw;
+}
+.infoWrapper {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    transition: filter 300ms;
+}
+
+.infoWrapper:hover {
+    filter: brightness(1.2);
+}
