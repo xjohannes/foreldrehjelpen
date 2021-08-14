@@ -1,22 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
+import { GlobalStore } from './store/globalStore';
 import './index.module.css';
-import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 import App from './App';
-import store from './reducers';
 import * as serviceWorker from './serviceWorker';
 import Auth0ProviderWithHistory from './Auth0ProviderWithHistory';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
+    <GlobalStore>
       <BrowserRouter>
         <Auth0ProviderWithHistory>
           <App />
         </Auth0ProviderWithHistory>
       </BrowserRouter>
-    </Provider>
+    </GlobalStore>
   </React.StrictMode>,
   document.getElementById('root')
 );
