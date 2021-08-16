@@ -3,7 +3,7 @@ h1 {
     padding-left: 5px;
     font-family: sans-serif;
 }
-.wrapper {
+.headerWrapper {
     width: 100%;
     border-bottom: var(--border);
     display: flex;

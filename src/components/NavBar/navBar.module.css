@@ -29,7 +29,6 @@ button:focus {
     outline-offset: -4px;
 }
 
-
 .navbar {
     height: var(--nav-size);
     background-color: var(--bg);

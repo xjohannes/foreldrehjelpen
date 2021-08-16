@@ -1,10 +1,7 @@
 import React, { ReactElement } from 'react';
 import stylesNav from '../NavBar/navBar.module.css';
+import { User } from '../../commonTypes/commonTypes';
 
-type User = {
-  name?: string;
-  picture?: string;
-};
 type AvatarProps = {
   user?: User;
 };
@@ -27,7 +24,7 @@ const Avatar = (props: AvatarProps): ReactElement => {
 Avatar.defaultProps = {
   user: {
     name: 'Jane Doe',
-    picture: 'No picture'
+    picture: 'No imgUrl'
   }
 };
 

@@ -1,9 +1,16 @@
-import { combineReducers, createStore } from 'redux';
+// import { combineReducers, createStore } from 'redux';
 
-import testReducer from './testReducer';
+import userReducer, { toggleNavState } from './userReducer';
 
-export default createStore(
+const Reducer = {
+  userReducer,
+  toggleNavState
+};
+
+export default Reducer;
+
+/* export default createStore(
   combineReducers({
-    testReducer
+    testReducer: userReducer
   })
-);
+); */

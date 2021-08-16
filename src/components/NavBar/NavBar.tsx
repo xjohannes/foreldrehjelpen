@@ -1,7 +1,9 @@
 import React, { SVGProps, useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link } from 'react-router-dom';
 import styles from './navBar.module.css';
+import { navStateType } from '../../commonTypes/commonTypes';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface Props {}
@@ -15,8 +17,9 @@ interface ItemProps {
   // eslint-disable-next-line react/require-default-props
   children?: React.ReactNode;
   icon: SVGProps<SVGSVGElement>;
+  navStateObj?: navStateType;
 }
-export const NavItem = ({ icon, children }: ItemProps) => {
+export const NavItem = ({ icon, children, navStateObj }: ItemProps) => {
   const [open, setOpen] = useState(false);
   return (
     <li className={styles.navItem}>
@@ -24,53 +27,76 @@ export const NavItem = ({ icon, children }: ItemProps) => {
       <button
         type="button"
         className={styles.iconButton}
-        onClick={() => setOpen(!open)}
+        onClick={() => navStateObj && navStateObj.toggleNavState()}
       >
         {icon}
       </button>
-      {open && children}
+      {navStateObj && navStateObj.open && children}
     </li>
   );
 };
 
-interface IconProps {
-  // eslint-disable-next-line react/require-default-props
-  children?: React.ReactNode;
-  // eslint-disable-next-line react/require-default-props
-  leftIcon?: React.ReactNode;
-  // eslint-disable-next-line react/require-default-props
-  rightIcon?: SVGProps<SVGSVGElement>;
-  // eslint-disable-next-line react/require-default-props
-  goToMenu?: string;
+NavItem.defaultProps = {
+  navStateObj: {
+    open: false,
+    toggleNavState: () => false
+  }
+};
+
+interface DropdownMenuProps {
+  navStateObj: navStateType;
 }
-export const DropdownMenu = () => {
+
+export const DropdownMenu = ({ navStateObj }: DropdownMenuProps) => {
   const [activeMenu, setActiveMenu] = useState('main');
   const [menuHeight, setMenuHeight] = useState<number>();
+
   const calcHeight = (el: HTMLElement) => {
     const height = el.offsetHeight;
     setMenuHeight(height);
   };
-
+  interface IconProps {
+    children?: React.ReactNode;
+    leftIcon?: React.ReactNode;
+    rightIcon?: SVGProps<SVGSVGElement>;
+    goToMenu?: string;
+    goToPage?: string;
+  }
   const DropdownItem = ({
     leftIcon,
     rightIcon,
     goToMenu,
+    goToPage,
     children
   }: IconProps) => (
     <>
-      {/* eslint-disable-next-line jsx-a11y/anchor-is-valid,jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
-      <button
-        type="button"
-        className={styles.menuItem}
-        onClick={() => goToMenu && setActiveMenu(goToMenu)}
-      >
-        <span className={styles.iconButton}>{leftIcon}</span>
-        {children}
-        <span className={styles.iconRight}>{rightIcon}</span>
-      </button>
+      <Link to={`/${goToPage}`}>
+        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid,jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
+        <button
+          type="button"
+          className={styles.menuItem}
+          onClick={() => {
+            if (goToMenu) {
+              setActiveMenu(goToMenu);
+            } else if (navStateObj) {
+              navStateObj.toggleNavState();
+            }
+          }}
+        >
+          <span className={styles.iconButton}>{leftIcon}</span>
+          {children}
+          <span className={styles.iconRight}>{rightIcon}</span>
+        </button>
+      </Link>
     </>
   );
-
+  DropdownItem.defaultProps = {
+    children: [],
+    leftIcon: <></>,
+    rightIcon: <></>,
+    goToMenu: '',
+    goToPage: ''
+  };
   return (
     <div className={styles.dropdown} style={{ height: menuHeight }}>
       <CSSTransition
@@ -86,7 +112,13 @@ export const DropdownMenu = () => {
         onEnter={calcHeight}
       >
         <div className={styles.menu}>
-          <DropdownItem leftIcon={<FontAwesomeIcon icon="child" />}>
+          <DropdownItem rightIcon={<FontAwesomeIcon icon="window-close" />}>
+            Lukk meny
+          </DropdownItem>
+          <DropdownItem
+            goToPage="trafikkvakt"
+            leftIcon={<FontAwesomeIcon icon="child" />}
+          >
             Trafikkvakt
           </DropdownItem>
           <DropdownItem
@@ -117,11 +149,12 @@ export const DropdownMenu = () => {
           >
             Hovedmeny
           </DropdownItem>
-          <DropdownItem>My Profile</DropdownItem>
-          <DropdownItem>My Profile</DropdownItem>
-          <DropdownItem>My Profile</DropdownItem>
-          <DropdownItem>My Profile</DropdownItem>
-          <DropdownItem>My Profile</DropdownItem>
+          <DropdownItem
+            goToPage="julemarked"
+            leftIcon={<FontAwesomeIcon icon="socks" />}
+          >
+            Mine Julemarkedoppgaver
+          </DropdownItem>
           <DropdownItem>My Profile</DropdownItem>
           <DropdownItem>My Profile</DropdownItem>
           <DropdownItem>My Profile</DropdownItem>

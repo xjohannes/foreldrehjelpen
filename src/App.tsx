@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useState } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -13,7 +13,8 @@ import {
   faSocks,
   faChild,
   faHandHolding,
-  faUser
+  faUser,
+  faWindowClose
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -30,6 +31,7 @@ import styles from './App.module.css';
 
 function App(): ReactElement {
   const { isAuthenticated, user } = useAuth0();
+  const [navState, setNavState] = useState(false);
   library.add(
     faBell,
     faCaretDown,
@@ -41,19 +43,31 @@ function App(): ReactElement {
     faSocks,
     faChild,
     faHandHolding,
-    faUser
+    faUser,
+    faWindowClose
   );
+  const toggleNavState = () => {
+    setNavState(!navState);
+    return navState;
+  };
+  const navStateObj = {
+    open: navState,
+    toggleNavState
+  };
   return (
     <>
-      <div className={styles.wrapper}>
+      <div className={styles.headerWrapper}>
         <BackButton />
         <PageTitle title="Foreldrehjelpen" />
         <NavBar>
           <AuthButton />
           {isAuthenticated && <NavItem icon={<Avatar user={user} />} />}
           {isAuthenticated && (
-            <NavItem icon={<FontAwesomeIcon icon="caret-down" />}>
-              <DropdownMenu />
+            <NavItem
+              navStateObj={navStateObj}
+              icon={<FontAwesomeIcon icon="caret-down" />}
+            >
+              <DropdownMenu navStateObj={navStateObj} />
             </NavItem>
           )}
         </NavBar>
