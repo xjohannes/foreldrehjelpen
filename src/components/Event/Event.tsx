@@ -2,12 +2,18 @@ import React, { ReactElement } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './event.module.css';
 
-type EventProps = {
+export type EventProps = {
   title: string;
   time: string;
   place: string;
   assignment: string;
 };
+export interface EventInterface {
+  title: string;
+  time: string;
+  place: string;
+  assignment: string;
+}
 const Event = (props: EventProps): ReactElement => {
   const { title, time, place, assignment } = props;
   return (
@@ -17,15 +23,15 @@ const Event = (props: EventProps): ReactElement => {
         <span className={styles.infWrapper}>
           <p>
             Tid:
-            {time}
+            {` ${time}`}
           </p>
           <p>
             Sted:
-            {place}
+            {` ${place}`}
           </p>
           <p>
             Oppgave:
-            {assignment}
+            {` ${assignment}`}
           </p>
         </span>
       </article>
