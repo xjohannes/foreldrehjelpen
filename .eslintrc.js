@@ -5,6 +5,7 @@ module.exports = {
   rules: {
     'prettier/prettier': ['error'],
     'react/jsx-wrap-multilines': 'off',
+    '@typescript-eslint/no-var-requires': 0,
     'react/jsx-filename-extension': [
       1,
       { extensions: ['.js', '.jsx', '.tsx'] }

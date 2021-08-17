@@ -8,7 +8,7 @@ export const toggleNavState = (newState: boolean): boolean => newState;
 const initialState = {
   loggedUser: {
     name: '',
-    imgUrl: ''
+    picture: ''
   },
   isUserAuthenticated: false,
   navState: false

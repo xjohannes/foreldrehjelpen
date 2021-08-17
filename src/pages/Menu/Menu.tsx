@@ -1,20 +1,21 @@
 import React, { ReactElement, useState, useEffect, useContext } from 'react';
+import { useAuth0 } from '@auth0/auth0-react';
 import Event from '../../components/Event';
+import type { EventType } from '../../commonTypes/commonTypes';
 import styles from './menu.module.css';
 import { globalContext } from '../../store/globalStore';
 import { getUser } from '../../httpClients/userClient';
 import { getEvent } from '../../httpClients/eventClient';
-import { User } from '../../commonTypes/commonTypes';
 import { SET_USER } from '../../commonTypes/Actions/comonActions';
 
-const julemarked = 'Julemarked';
-const syttendeMai = 'SyttendeMai';
-const Menu = (user: User): ReactElement => {
-  const [events, setEvents] = useState([]);
+const Menu = (): ReactElement => {
+  const { user } = useAuth0();
+  const userId = user?.sub && user.sub.split('|')[1];
+  const [events, setEvents] = useState<EventType[]>([]);
   const { dispatch } = useContext(globalContext);
   useEffect(() => {
     const fetchUser = async () => {
-      const userAwaited = await getUser(user.name);
+      const userAwaited = await getUser(userId);
       dispatch({ type: SET_USER, payload: userAwaited });
     };
     fetchUser();
@@ -22,7 +23,8 @@ const Menu = (user: User): ReactElement => {
   }, []);
   useEffect(() => {
     const fetchEvent = async () => {
-      setEvents(await getEvent(234));
+      const eventsFromServer = await getEvent(userId);
+      setEvents(eventsFromServer);
     };
     fetchEvent();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -33,18 +35,18 @@ const Menu = (user: User): ReactElement => {
       <header className={styles.header}>
         <h2>Dine kommende oppgaver:</h2>
       </header>
-      <Event
-        title={julemarked}
-        time=" Lørdag, 21.02.2021, kl 12.30"
-        place=" Cafeen"
-        assignment=" Selge godteri"
-      />
-      <Event
-        title={syttendeMai}
-        time=" Mandag 17.05.2022, kl 15.00"
-        place=" Storskolen"
-        assignment=" Lotteri"
-      />
+      {events.map((event, index) => {
+        const key = index;
+        return (
+          <Event
+            key={key}
+            title={event.title}
+            time={event.time}
+            place={event.place}
+            assignment={event.assignment}
+          />
+        );
+      })}
     </>
   );
 };
@@ -52,7 +54,7 @@ const Menu = (user: User): ReactElement => {
 Menu.defaultProps = {
   user: {
     name: 'Jane Doe',
-    imgUrl: 'No imgUrl'
+    picture: 'No picture url'
   }
 };
 

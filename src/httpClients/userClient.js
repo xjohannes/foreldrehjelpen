@@ -1,12 +1,13 @@
 import axios from 'axios';
 import { baseUrl } from '../config/config';
+import { User, EventType } from '../commonTypes/commonTypes';
 
 const client = axios.create({
   baseURL: baseUrl
 });
 
-export const getUser = (name) =>
-  client.get(`/user?user=${name}`).then((res) => res.data);
+export const getUser = (userId) =>
+  client.get(`/user?userId=${userId}`).then((res) => res.data);
 
 export const postUser = (userId) =>
   client.post(`/user?userId=${userId}`).then((res) => res.data);

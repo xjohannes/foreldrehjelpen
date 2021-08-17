@@ -24,7 +24,7 @@ const Avatar = (props: AvatarProps): ReactElement => {
 Avatar.defaultProps = {
   user: {
     name: 'Jane Doe',
-    picture: 'No imgUrl'
+    picture: 'No picture avatar'
   }
 };
 

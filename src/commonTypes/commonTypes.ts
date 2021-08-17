@@ -29,3 +29,10 @@ export type ContextType = {
   globalState: GlobalStateInterface;
   dispatch: Dispatch<UserActionType>;
 };
+
+export interface EventType {
+  title: string;
+  time: string;
+  place: string;
+  assignment: string;
+}
