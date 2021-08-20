@@ -1,61 +1,20 @@
 const dayjs = require('dayjs');
 const customParseFormat = require('dayjs/plugin/customParseFormat');
 const express = require('express');
+const userData = require('./userData.json');
 
 dayjs.extend(customParseFormat);
 
 const app = express();
 const port = 3001;
-const returnDataUser123 = [
-  {
-    title: 'Trafikkvakt',
-    time: dayjs('23.September 2022', 'DD.MMMM YYYY'),
-    place: 'Øvre felt Nordstrandveien',
-    assignment: 'Trafikkvakt'
-  },
-  {
-    title: 'Julemarked',
-    time: dayjs('1970-00-00', 'YYYY-MM-DD'),
-    place: 'Cafeen',
-    assignment: 'Godteboden'
-  },
-  {
-    title: '17.mai',
-    time: dayjs('17.Mai 2021', 'DD. MMMM YYYY'),
-    place: 'Storskolen (113)',
-    assignment: 'Lykkehjulet'
-  }
-];
-const returnDataUser234 = [
-  {
-    title: 'Trafikkvakt',
-    time: dayjs('05/02/69 1:02:03 PM -05:00', 'MM/DD/YY H:mm:ss A Z'),
-    place: 'Solveien',
-    assignment: 'Trafikkvakt'
-  },
-  {
-    title: 'Dugnad',
-    time: dayjs('2018 Enero 15', 'YYYY MMMM DD', 'es'),
-    place: 'Småskolen (115)',
-    assignment: 'Dugnad'
-  }
-];
-const eventRes = (userId) => {
-  switch (userId) {
-    case '104135659029594636830':
-      return returnDataUser123;
-    case '104258163563359462559':
-      return returnDataUser234;
-    default:
-      return [];
-  }
-};
 
+/// /// user /// ///
 const userData1 = {
-  name: 'Johannes Knowit'
+  name: 'Johannes Knowit',
+  phone: '92080690'
 };
 const userData2 = {
-  name: 'Johannes Knowit'
+  name: 'Johannes Privat'
 };
 
 const getUserData = (userId) => {
@@ -82,12 +41,42 @@ app
   .post((req, res, next) => {
     return res.send({});
   });
-/* app.route('/event').get((req, res, next) => {
-  res.json({});
-}); */
+
+/// /// event /// ///
+
+const eventRes = (userId, eventId, quantity) => {
+  if (quantity) {
+    // 1. sjekk userId for adminrettigheter
+    // 2. hent event og antall
+    return null;
+  }
+  if (eventId) {
+    // 1. hent prev, current og next team for userId
+    return null;
+  }
+  // 1. hent alle eventer for userId
+  switch (userId) {
+    case '104135659029594636830':
+      return userData.user123;
+    case '104258163563359462559':
+      return userData.user234;
+    default:
+      return [];
+  }
+};
 
 app.get('/event/:userId', (req, res) => {
   return res.json(eventRes(req.params.userId));
+});
+
+app.get('/event/:userId/:eventId', (req, res) => {
+  return res.json(eventRes(req.params.userId, req.params.eventId));
+});
+
+app.get('/event/:userId/:eventId/:quantity', (req, res, next) => {
+  return res.json(
+    eventRes(req.params.userId, req.params.eventId, req.params.quantity)
+  );
 });
 
 app.listen(port, () => {
