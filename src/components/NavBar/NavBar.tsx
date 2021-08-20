@@ -1,4 +1,4 @@
-import React, { SVGProps, useState } from 'react';
+import React, { ReactElement, SVGProps, useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
@@ -19,8 +19,11 @@ interface ItemProps {
   icon: SVGProps<SVGSVGElement>;
   navStateObj?: navStateType;
 }
-export const NavItem = ({ icon, children, navStateObj }: ItemProps) => {
-  const [open, setOpen] = useState(false);
+export const NavItem = ({
+  icon,
+  children,
+  navStateObj
+}: ItemProps): ReactElement => {
   return (
     <li className={styles.navItem}>
       {/* eslint-disable-next-line jsx-a11y/anchor-is-valid,jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
@@ -38,8 +41,7 @@ export const NavItem = ({ icon, children, navStateObj }: ItemProps) => {
 
 NavItem.defaultProps = {
   navStateObj: {
-    open: false,
-    toggleNavState: () => false
+    open: false
   }
 };
 

@@ -14,18 +14,21 @@ import {
   faChild,
   faHandHolding,
   faUser,
-  faWindowClose
+  faWindowClose,
+  faSms,
+  faPhone
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+import { OpUnitType } from 'dayjs';
 import { Home, Trafikkvakt, Julemarked, Syttendemai } from './pages';
 import Menu from './pages/Menu';
 
 import PrivateRoute from './components/routes/PrivateRoute';
 import { NavBar, NavItem, DropdownMenu } from './components/NavBar';
-import AuthButton from './components/Auth';
+import AuthButton from './components/buttons/Auth';
 import Avatar from './components/Avatar';
-import BackButton from './components/BackButton';
+import BackButton from './components/buttons/BackButton';
 import PageTitle from './components/PageTitle';
 import styles from './App.module.css';
 
@@ -44,7 +47,9 @@ function App(): ReactElement {
     faChild,
     faHandHolding,
     faUser,
-    faWindowClose
+    faWindowClose,
+    faPhone,
+    faSms
   );
   const toggleNavState = () => {
     setNavState(!navState);
@@ -56,7 +61,7 @@ function App(): ReactElement {
   };
   return (
     <>
-      <div className={styles.headerWrapper}>
+      <header className={styles.headerWrapper}>
         <BackButton />
         <PageTitle title="Foreldrehjelpen" />
         <NavBar>
@@ -71,12 +76,12 @@ function App(): ReactElement {
             </NavItem>
           )}
         </NavBar>
-      </div>
+      </header>
 
       {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
       <Switch>
-        <PrivateRoute path="/trafikkvakt" component={Trafikkvakt} />
+        <PrivateRoute path="/trafikkvakt/" component={Trafikkvakt} />
         <PrivateRoute path="/julemarked" component={Julemarked} />
         <PrivateRoute path="/syttendemai" component={Syttendemai} />
         <PrivateRoute path="/menu" component={Menu} />

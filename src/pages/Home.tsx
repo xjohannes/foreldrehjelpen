@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react';
-import SignIn from '../components/SignIn';
+import SignIn from '../components/buttons/SignIn';
 import styles from './home.module.css';
 
 const Home = (): ReactElement => (
