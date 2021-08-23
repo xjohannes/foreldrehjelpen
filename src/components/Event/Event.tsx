@@ -7,21 +7,21 @@ import { capitalizeFirstLetter } from '../../util';
 import { EventWithLocale } from './EventTypes';
 
 const Event = (props: EventWithLocale): ReactElement => {
-  const { title, time, place, assignment, duration } = props;
+  const { name, startTime, place, assignment, duration } = props;
   dayjs.locale(localeNb);
   const capitalizedDate = capitalizeFirstLetter(
-    dayjs(time).format('dddd, D. MMMM YYYY')
+    dayjs(startTime).format('dddd, D. MMMM YYYY')
   );
 
   const linkState = {
-    pathname: `${title}`,
+    pathname: `${name}`,
     state: props
   };
   return (
     <Link to={linkState}>
       <article>
         <header>
-          <h3>{title}</h3>
+          <h3>{name}</h3>
         </header>
 
         <span className={styles.infWrapper}>
@@ -31,12 +31,12 @@ const Event = (props: EventWithLocale): ReactElement => {
           </p>
           <p>
             Oppmøte:
-            {` ${dayjs(time).subtract(5, 'minute').format('H:mm')}`}
+            {` ${dayjs(startTime).subtract(5, 'minute').format('H:mm')}`}
           </p>
           <p>
             Vakta avsluttes:
             {duration.value &&
-              ` ${dayjs(time)
+              ` ${dayjs(startTime)
                 .add(duration.value, duration.timeUnits)
                 .format('H:mm')}`}
           </p>

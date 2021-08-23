@@ -6,7 +6,6 @@ const client = axios.create({
 });
 
 export const getEvent = (userId) => {
-  console.log('EVENT CLIENT userId', userId);
   return client.get(`/event/${userId}`).then((res) => res.data);
 };
 

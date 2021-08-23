@@ -55,9 +55,12 @@ const Menu = (): ReactElement => {
         const key = index;
         return (
           <Event
-            key={key}
-            title={event.title}
-            time={event.time}
+            key={event.id}
+            id={event.id}
+            name={event.name}
+            startTime={event.startTime}
+            users={event.users}
+            messages={event.messages}
             place={event.place}
             assignment={event.assignment}
             duration={event.duration}

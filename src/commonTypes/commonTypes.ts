@@ -43,10 +43,19 @@ interface duration {
   value: number;
 }
 
+interface Message {
+  id: string;
+  sender: string;
+  message: string;
+}
+
 export interface EventType {
-  title: string;
-  time: string;
+  id: string;
+  name: string;
+  startTime: string;
   place: string;
+  users: Array<string>;
+  messages: Array<Message>;
   duration: duration;
   assignment: string;
 }

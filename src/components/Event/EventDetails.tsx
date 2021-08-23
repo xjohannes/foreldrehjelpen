@@ -7,12 +7,12 @@ const EventDetails = (props: EventProps): ReactElement => {
   const userCurrent: User = {
     name: 'Hanne'
   };
-  const { title } = props;
+  const { name } = props;
   return (
     <>
       <article>
         <header>
-          <h2>{title}</h2>
+          <h2>{name}</h2>
         </header>
         <span className="previousTeam">
           <WorkTeam leader={userCurrent} members={[userCurrent]} />
