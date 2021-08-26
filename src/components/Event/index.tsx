@@ -1,3 +1,4 @@
 import Event from './Event';
+import EventDetails from './EventDetails';
 
-export default Event;
+export { Event, EventDetails };

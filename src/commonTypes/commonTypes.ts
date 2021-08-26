@@ -1,4 +1,5 @@
 import { Dispatch } from 'react';
+import { OpUnitType } from 'dayjs';
 
 export type setNavStateFunction = () => boolean;
 
@@ -10,7 +11,14 @@ export type navStateType = {
 export type User = {
   name?: string;
   picture?: string;
+  email?: string;
+  phone?: string;
 };
+
+export interface Team {
+  leader: User;
+  members: User[];
+}
 
 export interface GlobalStateInterface {
   isUserAuthenticated: boolean;
@@ -30,9 +38,15 @@ export type ContextType = {
   dispatch: Dispatch<UserActionType>;
 };
 
+interface duration {
+  timeUnits: OpUnitType;
+  value: number;
+}
+
 export interface EventType {
   title: string;
   time: string;
   place: string;
+  duration: duration;
   assignment: string;
 }

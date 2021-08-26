@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
-import stylesNav from '../NavBar/navBar.module.css';
+import stylesNav from '../../NavBar/navBar.module.css';
 
 const BackButton = (): ReactElement => {
   return (

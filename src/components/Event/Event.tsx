@@ -1,29 +1,44 @@
 import React, { ReactElement } from 'react';
 import { Link } from 'react-router-dom';
+import dayjs from 'dayjs';
+import localeNb from 'dayjs/locale/nb';
 import styles from './event.module.css';
+import { capitalizeFirstLetter } from '../../util';
+import { EventWithLocale } from './EventTypes';
 
-export type EventProps = {
-  title: string;
-  time: string;
-  place: string;
-  assignment: string;
-};
-export interface EventInterface {
-  title: string;
-  time: string;
-  place: string;
-  assignment: string;
-}
-const Event = (props: EventProps): ReactElement => {
-  const { title, time, place, assignment } = props;
+const Event = (props: EventWithLocale): ReactElement => {
+  const { title, time, place, assignment, duration } = props;
+  dayjs.locale(localeNb);
+  const capitalizedDate = capitalizeFirstLetter(
+    dayjs(time).format('dddd, D. MMMM YYYY')
+  );
+
+  const linkState = {
+    pathname: `${title}`,
+    state: props
+  };
   return (
-    <Link to={`/${title}`}>
+    <Link to={linkState}>
       <article>
-        <h3>{title}</h3>
+        <header>
+          <h3>{title}</h3>
+        </header>
+
         <span className={styles.infWrapper}>
           <p>
-            Tid:
-            {` ${time}`}
+            Dato:
+            {` ${capitalizedDate} `}
+          </p>
+          <p>
+            Oppmøte:
+            {` ${dayjs(time).subtract(5, 'minute').format('H:mm')}`}
+          </p>
+          <p>
+            Vakta avsluttes:
+            {duration.value &&
+              ` ${dayjs(time)
+                .add(duration.value, duration.timeUnits)
+                .format('H:mm')}`}
           </p>
           <p>
             Sted:

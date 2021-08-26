@@ -16,7 +16,7 @@ const PrivateRoute = ({
   const { isAuthenticated } = useAuth0();
   const render = (props: any) =>
     // eslint-disable-next-line react/jsx-props-no-spreading
-    isAuthenticated === true ? <Component {...props} /> : null;
+    isAuthenticated ? <Component {...props} /> : null;
   // eslint-disable-next-line react/jsx-props-no-spreading
   return <Route path={path} render={render} {...rest} />;
 };
