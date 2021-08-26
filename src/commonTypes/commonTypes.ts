@@ -16,7 +16,6 @@ export type User = {
 };
 
 export interface Team {
-  leader: User;
   members: User[];
 }
 
@@ -43,10 +42,42 @@ interface duration {
   value: number;
 }
 
-export interface EventType {
-  title: string;
-  time: string;
-  place: string;
+interface Message {
+  id: string;
+  sender: string;
+  message: string;
+}
+export interface WorkShiftType {
+  id: string;
+  name: string;
+  users: Array<string>;
+  messages: Array<Message>;
   duration: duration;
-  assignment: string;
+  startTime: string;
+}
+
+export interface TaskType extends WorkShiftType {
+  taskName: string;
+}
+
+export interface EventType extends TaskType {
+  type?: string;
+  place?: string;
+}
+
+export type Location = {
+  hash: string;
+  key: string;
+  pathname: string;
+  search: string;
+  state: EventType;
+};
+
+type History = {
+  location: Location;
+};
+
+export interface LinkProps {
+  history: History;
+  location: Location;
 }

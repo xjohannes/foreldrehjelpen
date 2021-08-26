@@ -1,56 +1,23 @@
-{
-  "user123": [
-    {
-      "title": "Trafikkvakt",
-      "time": "2022-02-29T07:15:00.000Z",
-      "place": "Øvre felt Nordstrandveien",
-      "duration": {
-        "timeUnits": "m",
-        "value": 30
-      },
-      "assignment": "Trafikkvakt"
-    },
-    {
-      "title": "lemarked",
-      "time": "2021-12-01T09:00:00.000Z",
-      "place": "Cafeen",
-      "duration": {
-        "timeUnits": "h",
-        "value": 2
-      },
-      "assignment": "Godteboden"
-    },
-    {
-      "title": "17.mai",
-      "time": "d2022-05-17T13:00:00.000Z",
-      "place": "Storskolen (113)",
-      "duration": {
-        "timeUnits": "h",
-        "value": 2
-      },
-      "assignment": "Lykkehjulet"
-    }
-  ],
-  "user234": [
-    {
-      "title": "Trafikkvakt",
-      "time": "2022-04-04T07:15:00.000Z",
-      "place": "Solveien",
-      "duration": {
-        "timeUnits": "m",
-        "value": 30
-      },
-      "assignment": "Trafikkvakt"
-    },
-    {
-      "title": "Dugnad",
-      "time": "2022-01-04T18:00:00.000Z",
-      "place": "Småskolen (115)",
-      "duration": {
-        "timeUnits": "h",
-        "value": 2
-      },
-      "assignment": "Dugnad"
-    }
-  ]
-}
+[
+  {
+    "id": "1",
+    "name": "Johannes Knowit",
+    "phone": "92080690"
+  },
+  {
+    "id": "2",
+    "name": "Johannes Gmail",
+    "phone": "12345678"
+  },
+  {
+    "id": "3",
+    "name": "Gard Måsjordet",
+    "phone": "12345678"
+  },
+  {
+    "id": "4",
+    "name": "Signe Salomonsen",
+    "phone": "12345678"
+  }
+]
+

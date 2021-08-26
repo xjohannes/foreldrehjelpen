@@ -1,1 +1,329 @@
-{}
+[
+  {
+    "id": "1",
+    "type": "Julemarked",
+    "parentInCharge": [3, 2],
+    "tasks": [
+      {
+      "id": "11",
+      "taskName": "Godteboden",
+      "parentInCharge": 4,
+      "inventory": [],
+      "workShifts": [
+        {
+          "id": "111",
+          "name": "10-vakta",
+          "startTime": "2021-12-01T09:00:00.000Z",
+          "duration": {
+            "timeUnits": "h",
+            "value": 2
+          },
+          "users": [1,4],
+          "messages": [
+            {
+              "from": 3,
+              "message": "Husk å halvere prisen siste timen"
+            }
+          ]
+        },
+        {
+          "id": "112",
+          "name": "12-vakta",
+          "startTime": "2021-12-01T11:00:00.000Z",
+          "duration": {
+            "timeUnits": "h",
+            "value": 2
+          },
+          "users": [1,2,4],
+          "messages": [
+            {
+              "from": 3,
+              "message": "Husk å halvere prisen siste timen"
+            },
+            {
+              "from": 3,
+              "message": "Alt er gratis etter stengetid"
+            },
+            {
+              "from": 3,
+              "message": "Rydd alt opp på loftet"
+            }
+          ]
+        },
+        {
+          "id": "113",
+          "name": "14-vakta",
+          "startTime": "2021-12-01T13:00:00.000Z",
+          "duration": {
+            "timeUnits": "h",
+            "value": 2
+          },
+          "users": [1,4],
+          "messages": [
+            {
+              "from": 3,
+              "message": "Husk å halvere prisen siste timen"
+            },
+            {
+              "from": 3,
+              "message": "Gratis boller etter stengetid"
+            }
+          ]
+        }
+      ],
+      "place": "Storskolen, 2 etg"
+    },
+      {
+        "id": "12",
+        "taskName": "Cafeen, 1.etg",
+        "parentInCharge": 4,
+        "inventory": [],
+        "workShifts": [
+          {
+            "id": "121",
+            "name": "10-vakta",
+            "startTime": "2021-12-01T09:00:00.000Z",
+            "duration": {
+              "timeUnits": "h",
+              "value": 2
+            },
+            "users": [4],
+            "messages": [
+              {
+                "from": 3,
+                "message": "Husk å halvere prisen siste timen"
+              },
+              {
+                "from": 3,
+                "message": "Gratis boller etter stengetid"
+              }
+            ]
+          },
+          {
+            "id": "122",
+            "name": "12-vakta",
+            "startTime": "2021-12-01T11:00:00.000Z",
+            "duration": {
+              "timeUnits": "h",
+              "value": 2
+            },
+            "users": [3,4],
+            "messages": [
+              {
+                "from": 3,
+                "message": "Husk å halvere prisen siste timen"
+              },
+              {
+                "from": 3,
+                "message": "Gratis boller etter stengetid"
+              }
+            ]
+          },
+          {
+            "id": "123",
+            "name": "14-vakta",
+            "startTime": "2021-12-01T13:00:00.000Z",
+            "duration": {
+              "timeUnits": "h",
+              "value": 2
+            },
+            "users": [1,4],
+            "messages": [
+              {
+                "from": 3,
+                "message": "Gratis boller etter stengetid"
+              }
+            ]
+          }
+        ],
+        "place": "Storskolen, 1 etg"
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "type": "Trafikkvakt",
+    "parentInCharge": [1],
+    "tasks": [
+      {
+        "id": "21",
+        "taskName": "Trafikkvakt",
+        "parentInCharge": [],
+        "inventory": [],
+        "workShifts": [
+          {
+            "id": "211",
+            "name": "Trafikkvakt",
+            "startTime": "2021-12-01T07:15:00.000Z",
+            "duration": {
+              "timeUnits": "m",
+              "value": 30
+            },
+            "users": [1,4],
+            "messages": [
+              {
+                "from": 3,
+                "message": "Husk å ikke la barna hjelpe med vakta. Det er forbudt i følge politiet."
+              }
+            ]
+          },
+          {
+            "id": "212",
+            "name": "Trafikkvakt",
+            "startTime": "2022-02-12T07:15:00.000Z",
+            "duration": {
+              "timeUnits": "m",
+              "value": 30
+            },
+            "users": [2,3,4],
+            "messages": [
+              {
+                "from": 3,
+                "message": "Husk å ikke la barna hjelpe med vakta. Det er forbudt i følge politiet."
+              }
+            ]
+          },
+          {
+            "id": "213",
+            "name": "Trafikkvakt",
+            "startTime": "2022-05-23T07:15:00.000Z",
+            "duration": {
+              "timeUnits": "m",
+              "value": 30
+            },
+            "users": [1,2],
+            "messages": [
+              {
+                "from": 3,
+                "message": "Husk å ikke la barna hjelpe med vakta. Det er forbudt i følge politiet."
+              }
+            ]
+          },
+          {
+            "id": "214",
+            "name": "Trafikkvakt",
+            "startTime": "2021-12-01T07:15:00.000Z",
+            "duration": {
+              "timeUnits": "m",
+              "value": 30
+            },
+            "users": [3,5],
+            "messages": [
+              {
+                "from": 3,
+                "message": "Husk å ikke la barna hjelpe med vakta. Det er forbudt i følge politiet."
+              }
+            ]
+          },
+          {
+            "id": "215",
+            "name": "Trafikkvakt",
+            "startTime": "2021-12-04T07:15:00.000Z",
+            "duration": {
+              "timeUnits": "m",
+              "value": 30
+            },
+            "users": [1,2,4],
+            "messages": [
+              {
+                "from": 3,
+                "message": "Husk å ikke la barna hjelpe med vakta. Det er forbudt i følge politiet."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "taskName": "Trafikkvakt",
+    "time": "2022-02-29T07:15:00.000Z",
+    "place": "Krysset Solveien/Nordstrandveien"
+  },
+  {
+    "id": "3",
+    "type": "Syttendemai",
+    "parentInCharge": [],
+    "tasks": [
+      {
+        "id": "31",
+        "taskName": "Lykkehjulet",
+        "parentInCharge": [4],
+        "inventory": [],
+        "workShifts": [
+          {
+            "id": "311",
+            "name": "Klargjøring",
+            "startTime": "2021-12-01T09:00:00.000Z",
+            "duration": {
+              "timeUnits": "h",
+              "value": 2
+            },
+            "users": [3],
+            "messages": []
+          },
+          {
+            "id": "312",
+            "name": "Første vakt",
+            "startTime": "2021-12-01T09:00:00.000Z",
+            "duration": {
+              "timeUnits": "m",
+              "value": 30
+            },
+            "users": [2],
+            "messages": []
+          },
+          {
+            "id": "313",
+            "name": "Andre vakt",
+            "startTime": "2021-12-01T09:00:00.000Z",
+            "duration": {
+              "timeUnits": "m",
+              "value": 30
+            },
+            "users": [4],
+            "messages": []
+          }
+        ]
+      }
+    ],
+    "place": "Storskolen, ute"
+  },
+  {
+    "id": "4",
+    "type": "Dugnad",
+    "parentInCharge": [],
+    "tasks": [
+      {
+        "id": "41",
+        "taskName": "Kjøkken",
+        "parentInCharge": [4],
+        "inventory": [],
+        "workShifts": [
+          {
+            "id": "411",
+            "name": "Innkjøp",
+            "startTime": "2021-09-15T09:00:00.000Z",
+            "duration": {
+              "timeUnits": "h",
+              "value": 2
+            },
+            "users": [1,3],
+            "messages": []
+          },
+          {
+            "id": "412",
+            "name": "Lage mat og rydde",
+            "startTime": "2021-09-15T09:00:00.000Z",
+            "duration": {
+              "timeUnits": "h",
+              "value": 2
+            },
+            "users": [2],
+            "messages": []
+          }
+        ]
+      }
+    ],
+    "place": "Storskolen, kantina"
+  }
+]
+

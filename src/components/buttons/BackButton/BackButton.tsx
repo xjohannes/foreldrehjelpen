@@ -7,7 +7,9 @@ const BackButton = (): ReactElement => {
   return (
     <li className={stylesNav.navItem}>
       <Link to="/menu" className={stylesNav.iconButton}>
-        <FontAwesomeIcon icon="caret-left" />
+        <button type="button">
+          <FontAwesomeIcon icon="caret-left" />
+        </button>
       </Link>
     </li>
   );

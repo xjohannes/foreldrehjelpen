@@ -1,18 +1,16 @@
 import React, { ReactElement } from 'react';
-import type { Team } from '../../commonTypes/commonTypes';
 import Participant from '../Participant';
 
-const WorkTeam = ({ leader, members }: Team): ReactElement => {
+type WorkTeamProps = {
+  teamMembers: string[];
+};
+const WorkTeam = ({ teamMembers }: WorkTeamProps): ReactElement => {
   return (
     <>
-      <header>
-        {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-        <Participant {...leader} />
-      </header>
-      {members.map((member, index) => {
+      {teamMembers.map((userId, index) => {
         const key = index;
         // eslint-disable-next-line react/jsx-props-no-spreading
-        return <Participant key={key} {...member} />;
+        return <Participant key={key} userId={userId} />;
       })}
     </>
   );

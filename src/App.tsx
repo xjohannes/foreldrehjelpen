@@ -20,7 +20,6 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { OpUnitType } from 'dayjs';
 import { Home, Trafikkvakt, Julemarked, Syttendemai } from './pages';
 import Menu from './pages/Menu';
 
@@ -62,7 +61,11 @@ function App(): ReactElement {
   return (
     <>
       <header className={styles.headerWrapper}>
-        <BackButton />
+        <nav>
+          <ul>
+            <BackButton />
+          </ul>
+        </nav>
         <PageTitle title="Foreldrehjelpen" />
         <NavBar>
           <AuthButton />
