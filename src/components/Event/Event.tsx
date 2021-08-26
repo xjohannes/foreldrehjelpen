@@ -4,10 +4,10 @@ import dayjs from 'dayjs';
 import localeNb from 'dayjs/locale/nb';
 import styles from './event.module.css';
 import { capitalizeFirstLetter } from '../../util';
-import { EventWithLocale } from './EventTypes';
+import { EventType } from '../../commonTypes/commonTypes';
 
-const Event = (props: EventWithLocale): ReactElement => {
-  const { name, startTime, place, assignment, duration } = props;
+const Event = (props: EventType): ReactElement => {
+  const { type, taskName, name, startTime, duration } = props;
   dayjs.locale(localeNb);
   const capitalizedDate = capitalizeFirstLetter(
     dayjs(startTime).format('dddd, D. MMMM YYYY')
@@ -21,10 +21,10 @@ const Event = (props: EventWithLocale): ReactElement => {
     <Link to={linkState}>
       <article>
         <header>
-          <h3>{name}</h3>
+          <h3>{type}</h3>
         </header>
 
-        <span className={styles.infWrapper}>
+        <div className={styles.infoWrapper}>
           <p>
             Dato:
             {` ${capitalizedDate} `}
@@ -40,15 +40,13 @@ const Event = (props: EventWithLocale): ReactElement => {
                 .add(duration.value, duration.timeUnits)
                 .format('H:mm')}`}
           </p>
-          <p>
-            Sted:
-            {` ${place}`}
-          </p>
-          <p>
-            Oppgave:
-            {` ${assignment}`}
-          </p>
-        </span>
+          {taskName && (
+            <p>
+              Sted:
+              {` ${taskName}`}
+            </p>
+          )}
+        </div>
       </article>
     </Link>
   );

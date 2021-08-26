@@ -16,10 +16,11 @@ app
   .route('/user')
   .get((req, res, next) => {
     const { userId } = req.query;
+
     return res.send(getUserData(userId));
   })
   .post((req, res, next) => {
-    return res.send({});
+    return res.send(getUserData(req.params.userId));
   });
 
 /// /// event /// ///
@@ -60,18 +61,27 @@ const getEvent = (eventId) => {
   return findEvent(eventData, eventId);
 };
 
-const addResult = (returned, result) => {
-  if (returned instanceof Array) {
-    returned.forEach((elem) => result.push(elem));
-  } else if (returned) {
-    result.push(returned);
-  }
-  return result;
+const getEventIdFromWorkShiftId = (workShiftId) => workShiftId.charAt(0);
+const getTaskIdFromWorkShiftId = (workShiftId) => workShiftId.charAt(1);
+
+const getTypeAndTaskTitle = (workShiftId) => {
+  const eventTypeFromWorkShiftId = eventData.find(
+    (event) => event.id === getEventIdFromWorkShiftId(workShiftId)
+  ).type;
+  const taskId =
+    getEventIdFromWorkShiftId(workShiftId) +
+    getTaskIdFromWorkShiftId(workShiftId);
+  const taskTitleFromWorkShiftId = findEvent(eventData, taskId);
+  const task = taskTitleFromWorkShiftId && taskTitleFromWorkShiftId.task;
+  return {
+    type: eventTypeFromWorkShiftId,
+    task
+  };
 };
 
 const findAllWorkShiftsForUser = (current, userId) => {
   const result = [];
-  if (current.users && current.users instanceof Array) {
+  if (current && current.users && current.users instanceof Array) {
     const isFound = current.users.some((elem) => elem === userId);
     if (isFound) {
       return current;
@@ -79,6 +89,7 @@ const findAllWorkShiftsForUser = (current, userId) => {
     return false;
   }
   if (
+    current &&
     typeof current !== 'string' &&
     typeof current !== 'number' &&
     !(current instanceof Array)
@@ -111,26 +122,31 @@ const findAllWorkShiftsForUser = (current, userId) => {
 const getAllEventsForUser = (userId) => {
   return findAllWorkShiftsForUser(eventData, userId);
 };
+
 const getEventForUser = (userId, eventId, quantity) => {
-  console.log('GET event for userId', userId);
   if (quantity) {
     // 1. sjekk userId for adminrettigheter
     // 2. hent event og antall, foreløpig alle
-    console.log('Quantity, GETTING EVENTS FOR ', userId);
     return getEvent(eventId);
   }
   if (eventId) {
-    console.log('Event, GETTING EVENTS FOR ', userId);
     // 1. hent prev, current og next team for userId
     const result = getEvent(eventId);
-    console.log('All events for user', result);
-    return result;
+    return {
+      ...getTypeAndTaskTitle(eventId),
+      ...result
+    };
   }
 
   // 1. hent alle eventer for userId
   const result = getAllEventsForUser(userId);
-  console.log('RESULT', result);
-  return result;
+  return result.map((workShift) => {
+    const typeAndTitle = getTypeAndTaskTitle(workShift.id);
+    return {
+      ...typeAndTitle,
+      ...workShift
+    };
+  });
 };
 
 const userIdTransformation = (userId) => {
@@ -146,14 +162,31 @@ const userIdTransformation = (userId) => {
   }
 };
 
+const getEventsByType = (eventType) => {
+  return eventData.find(
+    (event) => event.type.toLowerCase() === eventType.toLowerCase()
+  );
+};
+const getAllTasksForUserByEventType = (userId, eventType) => {
+  const eventsByType = getEventsByType(eventType);
+  return findAllWorkShiftsForUser(eventsByType, userId);
+};
+
 app.get('/event/:userId', (req, res) => {
   const result = getEventForUser(userIdTransformation(req.params.userId));
   return res.json(result);
 });
 
-app.get('/event/:userId/:eventId', (req, res) => {
-  console.log('GET event for user userId, eventId');
+/* app.get('/event/:userId/:eventId', (req, res) => {
   const result = getEventForUser(req.params.userId, req.params.eventId);
+  return res.json(result);
+}); */
+
+app.get('/event/:userId/:taskName', (req, res) => {
+  const result = getAllTasksForUserByEventType(
+    userIdTransformation(req.params.userId),
+    req.params.taskName
+  );
   return res.json(result);
 });
 

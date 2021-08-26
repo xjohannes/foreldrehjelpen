@@ -1,0 +1,16 @@
+.participantWrapper {
+    border-bottom: var(--border);
+}
+.user {
+    text-align: center;
+}
+.contactButtonsWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contactButton {
+    padding: 20px;
+    margin: 0 auto;
+}

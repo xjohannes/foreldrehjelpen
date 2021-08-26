@@ -1,21 +1,21 @@
 [
   {
-    "id": 1,
+    "id": "1",
     "name": "Johannes Knowit",
     "phone": "92080690"
   },
   {
-    "id": 2,
+    "id": "2",
     "name": "Johannes Gmail",
     "phone": "12345678"
   },
   {
-    "id": 3,
+    "id": "3",
     "name": "Gard Måsjordet",
     "phone": "12345678"
   },
   {
-    "id": 4,
+    "id": "4",
     "name": "Signe Salomonsen",
     "phone": "12345678"
   }

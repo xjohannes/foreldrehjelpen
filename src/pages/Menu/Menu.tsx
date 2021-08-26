@@ -5,25 +5,10 @@ import type { EventType } from '../../commonTypes/commonTypes';
 import styles from './menu.module.css';
 import { globalContext } from '../../store/globalStore';
 import { getUser } from '../../httpClients/userClient';
-import { getEvent } from '../../httpClients/eventClient';
+import { getAllEventsForUser } from '../../httpClients/eventClient';
 import { SET_USER } from '../../commonTypes/Actions/comonActions';
+import { sortEvents } from '../../util/helperFunctions';
 
-const translateLocale = (locale: string) => {
-  switch (locale) {
-    case 'no':
-      return 'nb';
-    case 'nb_NO':
-      return 'nb';
-    case 'nn':
-      return 'nn';
-    case 'nn_NO':
-      return 'nn';
-    case 'en':
-      return 'en';
-    default:
-      return locale;
-  }
-};
 const Menu = (): ReactElement => {
   const { user } = useAuth0();
   const userId = user?.sub && user.sub.split('|')[1];
@@ -39,7 +24,8 @@ const Menu = (): ReactElement => {
   }, []);
   useEffect(() => {
     const fetchEvent = async () => {
-      const eventsFromServer = await getEvent(userId);
+      const eventsFromServer = await getAllEventsForUser(userId);
+      sortEvents(eventsFromServer);
       setEvents(eventsFromServer);
     };
     fetchEvent();
@@ -51,20 +37,19 @@ const Menu = (): ReactElement => {
         <h2>Dine kommende oppgaver:</h2>
       </header>
       <a href="sms:1-408-555-5555">1-408-555-5555</a>
-      {events.map((event, index) => {
-        const key = index;
+      {events.map((event) => {
         return (
           <Event
             key={event.id}
             id={event.id}
+            type={event.type}
+            taskName={event.taskName}
             name={event.name}
             startTime={event.startTime}
             users={event.users}
             messages={event.messages}
             place={event.place}
-            assignment={event.assignment}
             duration={event.duration}
-            locale={translateLocale(user?.locale || 'nb')}
           />
         );
       })}
