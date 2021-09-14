@@ -1,4 +1,4 @@
-Det er en app som organiserer slike ting som dugnader, julemarkeder, trafikkvakt og 17. maiarrangementer.
+Dette er en app som organiserer slike ting som dugnader, julemarkeder, trafikkvakt og 17. maiarrangementer.
 
 Her vil foreldre kunne se hvilke arrangementer som er de neste de skal stille på. Disse listes kronologisk slik at det nærmeste arrangementet vil dukke opp øverst i listen. 
 
